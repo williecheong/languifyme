@@ -6,6 +6,7 @@ class Quote extends REST_Controller {
     function __construct() {
         parent::__construct();
         // Autoloaded Config, Helpers, Models
+        $this->load->model('pricing');
     }
 
     public function index_get() {
@@ -16,48 +17,27 @@ class Quote extends REST_Controller {
     public function index_post() {
         $data = clean_input( $this->post() );
 
-        if ( isset($data['message']) ) {
-            if ( isset($data['email']) ) {
-                $ipaddress = $_SERVER['REMOTE_ADDR'];
-                $timestamp = date("Y-m-d H:i:s");
-                $message = $data['message'];
-                $email = $data['email'];
+        if ( isset($data['content']) && isset($data['origin_language']) && isset($data['target_language']) ) {
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+            $timestamp = date("Y-m-d H:i:s");
+            
+            $content = $data['content'];
+            $origin_language = strtolower( $data['origin_language'] );
+            $target_language = strtolower( $data['target_language'] );
 
-                if ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
-                    $headers = "From: languify" . "\r\n" .
-                               "Content-type: text/html; charset=iso-8859-1" . "\r\n";
-
-                    $emailbody = "<p><strong>Sender:</strong> " . $email . "<br>" .
-                                    "<strong>Timestamp:</strong> " . $timestamp . "<br>" .
-                                    "<strong>IP address:</strong> " . $ipaddress . "<br>" .
-                                    "<strong>Message:</strong></p>" . $message;
-
-                    mail(
-                        "masterterrychen@gmail.com, cheongwillie@gmail.com",
-                        "New message: " . $email, 
-                        $emailbody, 
-                        $headers
-                    );
-
-                    echo json_encode(
-                        array(
-                            'status' => 'success',
-                            'message' => ''
-                        )
-                    );
-                } else {
-                    echo json_encode(
-                        array(
-                            'status' => 'fail',
-                            'message' => ''
-                        )
-                    );
-                }
-            } else {
+            if ( $this->verify_support($origin_language) && $this->verify_support($target_language) ) {
                 echo json_encode(
                     array(
-                        'status' => 'fail',
-                        'message' => ''
+                        'status' => 'success',
+                        'message' => 'Price estimate generated successfully',
+                        'estimate' => $this->pricing->calculate_estimate($content, $origin_language, $target_language)
+                    )
+                );
+            } else {
+                echo json_encode( 
+                    array(
+                        'status'  => 'fail',
+                        'message' => 'Unsupported language has been input'
                     )
                 );
             }
@@ -65,11 +45,26 @@ class Quote extends REST_Controller {
             echo json_encode( 
                 array(
                     'status'  => 'fail',
-                    'message' => ''
+                    'message' => 'Params are missing'
                 )
             );
         }
 
         return;
+    }
+
+    private function verify_support( $language = '' ) {
+        $supported_languages = array(
+            'en',       // english
+            'zh_cn',    // chinese simplified
+            'zh_tw',    // chinese traditional
+            'ja',       // japanese
+            'ko',       // korean
+            'es',       // spanish
+            'ar',       // arabic
+            'fr'        // french
+        );
+
+        return in_array( $language, $supported_languages );
     }
 }
