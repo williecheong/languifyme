@@ -487,18 +487,17 @@
             </div>
         </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-        
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
-    <script src="//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script type="text/javascript" src="/assets/js/shield/retina.js"></script>
-    <script type="text/javascript" src="/assets/js/shield/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="/assets/js/shield/smoothscroll.js"></script>
-    <script type="text/javascript" src="/assets/js/shield/jquery-func.js"></script>
-  </body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+            
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="/assets/js/shield/retina.js"></script>
+        <script type="text/javascript" src="/assets/js/shield/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="/assets/js/shield/smoothscroll.js"></script>
+        <script type="text/javascript" src="/assets/js/shield/jquery-func.js"></script>
+    </body>
 </html>
