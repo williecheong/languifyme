@@ -14,11 +14,32 @@ class Contact extends REST_Controller {
 
     // Used to create a new group in the DB
     public function index_post() {
-        if ( isset($data['message']) ){
+        $data = $this->post();
+
+        if ( isset($data['message']) ) {
             $email = '';
             if ( isset($data['email']) ) {
+                $ipaddress = $_SERVER['REMOTE_ADDR'];
+                $message = $data['message'];
                 $email = $data['email'];
-            
+                $date = date('d/m/Y');
+                $time = date('H:i:s');
+
+                $headers = "From: languify.me" . "\r\n" .
+                           "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+
+                $emailbody = "<p><strong>Sender:</strong> " . $email . "</p>" .
+                             "<p><strong>Timestamp:</strong> " . $timestamp . "</p>"
+                             "<p><strong>IP address:</strong> " . $ipaddress . "</p>"
+                             "<p><strong>Message:</strong></p>" . $message;
+
+                mail(
+                    "masterterrychen@gmail.com, cheongwillie@gmail.com",
+                    "New message: " . $email, 
+                    $emailbody, 
+                    $headers
+                );
+
                 echo json_encode(
                     array(
                         'status' => 'success',

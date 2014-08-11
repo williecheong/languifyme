@@ -1,0 +1,10 @@
+img.logo {
+    max-width: 90%;
+}
+
+img.logo-nav {
+    top: -12px;
+    max-width: 50px;
+    background: none;
+    position: relative;
+}
