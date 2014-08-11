@@ -1,7 +1,7 @@
 <?php // if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 require(APPPATH.'/libraries/REST_Controller.php');
 
-class Contact extends REST_Controller {
+class Quote extends REST_Controller {
     
     function __construct() {
         parent::__construct();
@@ -12,7 +12,7 @@ class Contact extends REST_Controller {
         echo date('Y-m-d H:i:s');
     }
 
-    // Used to send an email to Languify
+    // Used to get a price estimate from Languify
     public function index_post() {
         $data = clean_input( $this->post() );
 
@@ -24,13 +24,13 @@ class Contact extends REST_Controller {
                 $email = $data['email'];
 
                 if ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
-                    $headers = "From: languify.me" . "\r\n" .
+                    $headers = "From: languify" . "\r\n" .
                                "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 
-                    $emailbody = "<p><strong>Sender:</strong> " . $email . "</p>" .
-                                 "<p><strong>Timestamp:</strong> " . $timestamp . "</p>" .
-                                 "<p><strong>IP address:</strong> " . $ipaddress . "</p>" .
-                                 "<p><strong>Message:</strong></p>" . $message;
+                    $emailbody = "<p><strong>Sender:</strong> " . $email . "<br>" .
+                                    "<strong>Timestamp:</strong> " . $timestamp . "<br>" .
+                                    "<strong>IP address:</strong> " . $ipaddress . "<br>" .
+                                    "<strong>Message:</strong></p>" . $message;
 
                     mail(
                         "masterterrychen@gmail.com, cheongwillie@gmail.com",
@@ -42,14 +42,14 @@ class Contact extends REST_Controller {
                     echo json_encode(
                         array(
                             'status' => 'success',
-                            'message' => 'Email message successfully sent'
+                            'message' => ''
                         )
                     );
                 } else {
                     echo json_encode(
                         array(
                             'status' => 'fail',
-                            'message' => 'Sender email address not valid'
+                            'message' => ''
                         )
                     );
                 }
@@ -57,7 +57,7 @@ class Contact extends REST_Controller {
                 echo json_encode(
                     array(
                         'status' => 'fail',
-                        'message' => 'Sender email address not specified'
+                        'message' => ''
                     )
                 );
             }
@@ -65,7 +65,7 @@ class Contact extends REST_Controller {
             echo json_encode( 
                 array(
                     'status'  => 'fail',
-                    'message' => 'Message is missing from email'
+                    'message' => ''
                 )
             );
         }
