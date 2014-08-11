@@ -39,7 +39,6 @@
 */
 
 $route['default_controller'] = "main";
-$route['404_override'] = "main/missing";
 
 
 /* End of file routes.php */
