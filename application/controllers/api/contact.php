@@ -17,35 +17,42 @@ class Contact extends REST_Controller {
         $data = $this->post();
 
         if ( isset($data['message']) ) {
-            $email = '';
             if ( isset($data['email']) ) {
                 $ipaddress = $_SERVER['REMOTE_ADDR'];
+                $timestamp = date("Y-m-d H:i:s");
                 $message = $data['message'];
                 $email = $data['email'];
-                $date = date('d/m/Y');
-                $time = date('H:i:s');
 
-                $headers = "From: languify.me" . "\r\n" .
-                           "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+                if ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+                    $headers = "From: languify.me" . "\r\n" .
+                               "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 
-                $emailbody = "<p><strong>Sender:</strong> " . $email . "</p>" .
-                             "<p><strong>Timestamp:</strong> " . $timestamp . "</p>"
-                             "<p><strong>IP address:</strong> " . $ipaddress . "</p>"
-                             "<p><strong>Message:</strong></p>" . $message;
+                    $emailbody = "<p><strong>Sender:</strong> " . $email . "</p>" .
+                                 "<p><strong>Timestamp:</strong> " . $timestamp . "</p>" .
+                                 "<p><strong>IP address:</strong> " . $ipaddress . "</p>" .
+                                 "<p><strong>Message:</strong></p>" . $message;
 
-                mail(
-                    "masterterrychen@gmail.com, cheongwillie@gmail.com",
-                    "New message: " . $email, 
-                    $emailbody, 
-                    $headers
-                );
+                    mail(
+                        "masterterrychen@gmail.com, cheongwillie@gmail.com",
+                        "New message: " . $email, 
+                        $emailbody, 
+                        $headers
+                    );
 
-                echo json_encode(
-                    array(
-                        'status' => 'success',
-                        'message' => 'Email message successfully sent'
-                    )
-                );
+                    echo json_encode(
+                        array(
+                            'status' => 'success',
+                            'message' => 'Email message successfully sent'
+                        )
+                    );
+                } else {
+                    echo json_encode(
+                        array(
+                            'status' => 'fail',
+                            'message' => 'Sender email address not valid'
+                        )
+                    );
+                }
             } else {
                 echo json_encode(
                     array(
