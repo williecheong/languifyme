@@ -27,10 +27,10 @@ class Contact extends REST_Controller {
                     $headers = "From: languify.me" . "\r\n" .
                                "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 
-                    $emailbody = "<p><strong>Sender:</strong> " . $email . "</p>" .
-                                 "<p><strong>Timestamp:</strong> " . $timestamp . "</p>" .
-                                 "<p><strong>IP address:</strong> " . $ipaddress . "</p>" .
-                                 "<p><strong>Message:</strong></p>" . $message;
+                    $emailbody = "<p><strong>Sender:</strong> " . $email . "<br>" .
+                                    "<strong>Timestamp:</strong> " . $timestamp . "<br>" .
+                                    "<strong>IP address:</strong> " . $ipaddress . "<br>" .
+                                    "<strong>Message:</strong></p>" . $message;
 
                     mail(
                         "masterterrychen@gmail.com, cheongwillie@gmail.com",
