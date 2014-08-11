@@ -237,10 +237,10 @@
         <div id="greywrap">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8 centered">
-                        <img class="img-responsive" src="/assets/img/shield/macbook.png" align="">
+                    <div class="col-lg-8 centered">
+                        <img class="img-responsive img-thumbnail" src="/assets/img/jump_3.jpg">
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-lg-4">
                         <h2>We are hiring!</h2>
                         Do you want to be one of us? Of course you do, because we are an awesome team! 
                         At Languify, we work hard every day to help businesses all around the world reach a wider audience.
