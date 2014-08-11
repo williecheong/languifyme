@@ -9,7 +9,7 @@ class Feedbacks extends REST_Controller {
     }
 
     public function index_get() {
-        echo date();
+        echo date('Y-m-d H:i:s');
     }
 
     // Used to create a new group in the DB
