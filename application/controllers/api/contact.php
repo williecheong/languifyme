@@ -24,7 +24,7 @@ class Contact extends REST_Controller {
                 $email = $data['email'];
 
                 if ( filter_var($email, FILTER_VALIDATE_EMAIL) ) {
-                    $headers = "From: languify.me" . "\r\n" .
+                    $headers = "From: languify" . "\r\n" .
                                "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 
                     $emailbody = "<p><strong>Sender:</strong> " . $email . "<br>" .
