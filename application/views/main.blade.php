@@ -142,7 +142,7 @@
         <!-- ==== SECTION DIVIDER1 -->
         <section class="section-divider textdivider divider1">
             <div class="container">
-                <h1>EXPAND BOUNDARIES</h1>
+                <h1>HELPING YOU EXPAND BOUNDARIES</h1>
                 <hr>
                 <p>
                     <i class="fa fa-quote-left fa-lg"></i>
@@ -194,9 +194,14 @@
         <!-- ==== SECTION DIVIDER3 -->
         <section class="section-divider textdivider divider3">
             <div class="container">
-                <h1>DESIGN SOLVE PROBLEMS</h1>
+                <h1>TRANSPARENT BUSINESS PRACTICES</h1>
                 <hr>
-                <p>From the purely practical to the richly philosophical, design is the solution to a host of challenges.</p>
+                <p>
+                    <i class="fa fa-quote-left fa-lg"></i>
+                    ... keys to brand success are transparency, authenticity and accountability.
+                    <i class="fa fa-quote-right fa-lg"></i>
+                    - Simon Mainwaring 
+                </p>
             </div><!-- container -->
         </section><!-- section -->
         
@@ -289,9 +294,12 @@
                         <i class="fa fa-info-circle"></i>
                         More Information
                     </h3>
-                    <p><span class="icon icon-home"></span> Some Address 987, NY<br/>
-                        <span class="icon icon-phone"></span> +34 9884 4893 <br/>
-                        <span class="icon icon-mobile"></span> +34 59855 9853 <br/>
+                    <p>
+                        <i class="fa fa-home fa-lg"></i> Some Address 987, NY
+                        <br/>
+                        <i class="fa fa-phone fa-lg"></i> +34 9884 4893 
+                        <br/>
+                        <i class="fa fa-mobile fa-lg"></i> +34 59855 9853
                     </p>
                 </div><!-- col -->
             </div><!-- row -->
